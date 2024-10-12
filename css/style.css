@@ -1,0 +1,96 @@
+.class-1 {
+    margin:10px
+}
+.class-2 {
+    position:absolute;
+    left:17px;
+    top:0px;
+    width: 200px;
+    margin: 7px auto 0 7px;
+    
+}
+.class-3 {
+    height: 28px;
+    
+}
+.class-4 {
+    width: 176px;
+    margin: 7px auto 0;
+    
+}
+.class-5 {
+    position:absolute;
+    right:20px;
+    top:0px;
+    width: 120px;
+    margin: 7px 7px 0 auto;
+    
+}
+.class-6 {
+    height: 30px;
+    
+}
+.class-7 {
+    margin:10px;
+    background-color:#bddfd3
+}
+.class-8 {
+    font-size:1.5rem
+}
+.class-9 {
+    font-size:1.2rem
+}
+.class-10 {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 14px);
+    min-height: 300px;
+    margin:7px;
+    background-color:#80808054
+}
+.class-11 {
+
+    padding-left: 10px;
+    
+}
+.class-12 {
+    padding-left: 7px;
+    
+}
+.class-13 {
+    height:24px;
+    margin-left: 10px;
+    
+}
+.class-14 {
+    padding-left: 7px;
+    
+}
+.class-15 {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 14px);
+    margin:7px;
+    background-color:#f9f99e
+}
+.class-16 {
+    font-weight: bold;
+    padding-left: 7px;
+    
+}
+.class-17 {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 14px);
+    margin:7px;
+    background-color:#e0e0e0
+}
+.class-18 {
+    font-weight: bold;
+    
+}
+.class-19 {
+    height:20px;
+    margin-left: 10px;
+    
+}

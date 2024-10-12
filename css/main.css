@@ -1,0 +1,41 @@
+body {
+  background-color: #80808014;
+  font-size: 0.9rem;
+}
+p {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+#current {
+  padding: 7px;
+}
+
+li {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+}
+
+
+
+.tip .tiptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin-left: -60px;
+
+}
+
+
+
+.tip:hover .tiptext {
+  visibility: visible;
+  opacity: 1;
+}

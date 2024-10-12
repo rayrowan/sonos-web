@@ -1,0 +1,78 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sonos Web Controller</title>
+	<link rel="stylesheet" href="css/main.css">		
+	<link rel="stylesheet" href="css/style.css">	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>	
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  </head>
+
+
+	<!-- =============      Body       ============ -->
+  <body>
+	<header id="top-control" class="class-1">
+
+		<div id="volume-controls" class="class-2">
+			<img id="up" src="images/up.png" class="class-3">
+			<img id="down" src="images/down.png" class="class-3">
+		</div>
+		<div id="controls" class="class-4">
+			<img id="prev" src="images/prev.png">
+			<img id="play" src="images/play.png">
+			<img id="pause" src="images/pause.png">
+			<img id="next" src="images/next.png">
+		</div> 
+		<div id="refreshControl" class="class-5">
+			<img id="refreshButton" src="images/refresh.png" class="class-3">
+			<!--img id="settingsButton" src="images/cog.png" style="height: 30px;" /-->
+			<img id="helpButton" src="images/help.png" class="class-6">
+			
+		</div> 
+	</header>
+	<div id="main" class="class-7">
+		<div id="current">
+			<p class="class-8">Current</p>
+			<p><b>Title</b> <span id="title"> </span></p>
+			<p><b>Artist</b> <span id="artist"> </span></p>
+			<p class="class-9">Next</p> 
+			<p><b>Title</b> <span id="next-title"> </span></p>
+			<p><b>Artist</b> <span id="next-artist"> </span></p>
+		</div>
+	</div>
+	<div id="list-name-container" class="class-10">
+		<p id="queueLabel" class="class-11"><b>Queue</b></p>
+		<p class="class-12"><input type="text" id="saveTitle" name="saveTitle"><img id="saveButton" src="images/save.png" class="class-13"></p>
+		<p class="class-14"><b>Playlists</b></p>
+		<div id="playlist-list"> 
+			<ul id="ul-playlist-list">
+			</ul>
+		</div>
+	</div>
+	<div id="list-items-container" class="class-15">
+		<div id="song-list">  
+			<p id="playlist-title" class="class-16">Queue</p>
+			<ol id="ul-song-list">
+			</ol>
+		</div>
+	</div>
+	<div id="file-items-container" class="class-17">
+		<div id="file-list">  
+			<p class="class-14"> <span id="filelist-title" class="class-18">Folder</span><img id="up-folder" src="images/up.png" class="class-19"></p> 
+			<ul id="ul-file-list">
+			</ul>
+		</div>
+	</div>	
+	<footer id="footDiv" class="class-1"> 
+		<div id="statusBar"> </div>
+		<div id="footText">
+			© All rights reserved.<br>
+		</div>
+	</footer>
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+  
+   
+</body></html>
