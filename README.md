@@ -45,6 +45,7 @@ Click Up arrow to go back up a level
 
 # Installation
 Copy this folder to a folder on a web server. 
+Edit the settings.json
 
 ## Prerequisite
 - Install NodeJS.
@@ -55,9 +56,9 @@ Copy this folder to a folder on a web server.
  - -  const directoryPath = '/home/pi/share/music';
 - Rebuild the node project
 - Start node-sonos-http-api-master
-- Test: In a browser, enter <URL>/playlists to see a JSON of all the playlists on your Sonos system.
+- Test: In a browser on the same machine, enter http://localhost:5050/playlists to see a JSON of all the playlists on your Sonos system.
 
 # To run
-Enter the URL for the folder in a browser.
+Enter the URL for the sonos-web folder in a browser.
 
 
