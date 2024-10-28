@@ -1,3 +1,4 @@
 {
-    "uri": "http://192.168.0.166:5005/living%20room/"
+    "uri": "http://192.168.0.166:5005/living%20room/",
+    "musicLibrary": "//192.168.0.166/shared/music"
 }

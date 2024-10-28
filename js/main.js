@@ -1,7 +1,35 @@
 let uri = ""; 
+let musicLibrary = "";
 let currentPlaylist = [];
+let topFolder = true;
+let folderName = "";
+let repeat = "none";
+let shuffle = false;
 $("#up").click(function(){ sonosApi("volume/+5"); });
 $("#down").click(function(){ sonosApi("volume/-5");  });
+$("#repeat").click(function(){ 
+	if (repeat == "none") {
+		sonosApi("repeat/on");
+		repeat = "all";
+		$('#repeat').css('opacity', '1.0');
+	} else {
+		sonosApi("repeat/off"); 
+		repeat = "none";
+		$('#repeat').css('opacity', '0.4');
+	} 
+});
+$("#shuffle").click(function(){ 
+	if (shuffle == false) {
+		sonosApi("shuffle/on");
+		shuffle = true;
+		$('#shuffle').css('opacity', '1.0');
+	} else {
+		sonosApi("shuffle/off"); 
+		shuffle = false;
+		$('#shuffle').css('opacity', '0.3');
+	} 
+});
+	
 $("#play").click(function(){ sonosApi("play");  });
 $("#pause").click(function(){ sonosApi("pause");  });
 $("#prev").click(function(){ sonosApi("previous"); });
@@ -15,6 +43,7 @@ $("#ul-playlist-list").on("click", "li", function(){ listPlaylist(this.id); });
 $("#ul-playlist-list").on("dblclick", "li", function(){ playPlaylist(this.id); });
 $("#ul-song-list").on("dblclick", "li", function(){ addToQueue(this.id); });
 $("#ul-file-list").on("click", "li", function(){ listFiles(this.id); });
+//$("#ul-file-list").on("dblclick", "li", function(){ addFileToQueue(this.id); });
 $("#up-folder").click(function(){ listFolders(); });
 
 
@@ -30,6 +59,8 @@ window.onload = function() {
 		.then(settings => {
 			// Update the webpage with the settings
 			uri = settings.uri;
+			musicLibrary = settings.musicLibrary;
+
 			sonosApi("state");
 		})
 		.catch(error => console.error('Error loading settings:', error));
@@ -73,6 +104,20 @@ async function sonosApi(data1) {
 	 artist.textContent = data2.currentTrack.artist;
 	 nextTitle.textContent = data2.nextTrack.title;
 	 nextArtist.textContent = data2.nextTrack.artist;	
+
+	 repeat = data2.playMode.repeat;
+	 shuffle = data2.playMode.shuffle;
+	 console.log("Repeat " + repeat + "; Shuffle = " + shuffle);
+	 if (shuffle == false) {
+		$('#shuffle').css('opacity', '0.3');
+	} else {
+		$('#shuffle').css('opacity', '1.0');
+	} 
+	if (repeat == "none") {
+		$('#repeat').css('opacity', '0.4');
+	} else {
+		$('#repeat').css('opacity', '1.0');
+	} 
 
 	const playlistJson = sonosApi("playlists");
 	playlistJson.then(function(result){
@@ -186,11 +231,20 @@ async function addToQueue(item) {
 	
 	const song = document.getElementById(item);
 	const songUri = song.getAttribute("data-uri");
-	console.log(song);
-	const uri = "addtoqueue/" + encodeURIComponent(songUri) + "/true/1"
-	console.log(item);
+	const uri = "addtoqueue/" + encodeURIComponent(songUri) + "/true/1";
 	console.log(uri);
 	sonosApi(uri);
+}
+
+async function addFileToQueue(item) {
+	
+	const songStr = document.getElementById(item).innerHTML;
+	const songUri = "x-file-cifs:" + musicLibrary + "/" + folderName + "/" + songStr;
+	const uri = "addtoqueue/" + encodeURIComponent(songUri) + "/true/1";
+	console.log(uri);
+	sonosApi(uri);
+	console.log('Hello');
+	setTimeout(() => { listQueue(); }, 200);
 }
 
 // Add saveQueue.js to node-sonos-http-api-master/lib/actions 
@@ -199,10 +253,10 @@ async function addToQueue(item) {
 async function saveQueue() {
 	
 	const title = document.getElementById("saveTitle").value;
-	console.log(title);
 	const uri = "savequeue/" + title;
 	console.log(uri);
 	sonosApi(uri);
+	setTimeout(() => {sonosApi("state"); }, 200);
 }
 
 // Add folderlist.js to node-sonos-http-api-master/lib/actions 
@@ -210,6 +264,7 @@ async function saveQueue() {
 //http://localhost:5005/folderlist
 
 async function listFolders() {
+	topFolder = true;
 	const filelistTitle = document.getElementById('filelist-title');
 	filelistTitle.innerHTML = "Folders";	
 	
@@ -235,6 +290,13 @@ async function listFolders() {
 }
 
 async function listFiles(item) {
+	if (topFolder == true) {
+		topFolder = false;
+		folderName = document.getElementById(item).innerHTML;;
+	} else {
+		addFileToQueue(item);
+		return;
+	}
 	console.log(currentPlaylist);
 	
 	const filelistText = document.getElementById(item).innerHTML;
